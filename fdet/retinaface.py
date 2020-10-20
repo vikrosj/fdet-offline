@@ -156,7 +156,7 @@ class RetinaFace(Detector):
         base_url = '../weights/'
         if backbone == 'MOBILENET':
             url = 'mobilenet_v2-b0353104.pth'
-        else: #if backbone == 'RESNET50':
+        else:
             url = 'resnet50-19c8e357.pth'
 
         state_dict = torch.load(base_url + url, map_location=self._device_control)
