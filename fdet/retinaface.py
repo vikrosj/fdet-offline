@@ -153,13 +153,13 @@ class RetinaFace(Detector):
 
     def __load_retina_module(self, backbone: str) -> '_RetinaModule':
 
-        url = ''
+        base_url = '../weights/'
         if backbone == 'MOBILENET':
-            url = 'https://www.dropbox.com/s/kr1xjmzry4l8p6g/retinaface_mobilenetv1_final.pt?dl=1'
+            url = 'mobilenet_v2-b0353104.pth'
         else: #if backbone == 'RESNET50':
-            url = 'https://www.dropbox.com/s/d0xdha71fwr53uk/retinaface_resnet50_final.pt?dl=1'
+            url = 'resnet50-19c8e357.pth'
 
-        state_dict = load_state_dict_from_url(url, map_location=self._device_control)
+        state_dict = torch.load(base_url + url, map_location=self._device_control)
 
         model = _RetinaModule(device_control=self._device_control, backbone=backbone)
         model.load_state_dict(state_dict, strict=False)
