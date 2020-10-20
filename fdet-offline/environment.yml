@@ -1,0 +1,19 @@
+name: fdet
+channels:
+- pytorch
+- conda-forge
+- defaults
+dependencies:
+- python=3.8
+- pip
+- pylint
+- mypy
+- pytest
+- pytest-cov
+- pytorch
+- torchvision
+- cudatoolkit
+- pip:
+  - python-language-server
+  - wemake-python-styleguide
+
