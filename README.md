@@ -3,11 +3,12 @@
 A version of [fdet](https://github.com/acnazarejr/fdet)
 where you don't have to access the internet to download the weights.
 
-There are only two changes:
+These are the changes:
 
+## MTCNN
 ### 1.
 
-In fdet/mtcnn.py, line 73-76, the url for the weights are listed:
+In fdet/mtcnn.py, line 73-76, the url for the MTCNN-weights are listed:
 
 ```python
 base_url = 'https://github.com/acnazarejr/fdet/releases/download/weights/'
@@ -34,3 +35,6 @@ That line now states this instead;
 ```python
 state_dict = torch.load(url, map_location=self._device_control)
 ```
+
+## RetinaFace
+### 1.
