@@ -41,11 +41,11 @@ state_dict = torch.load(url, map_location=self._device_control)
 
 In fdet/retinaface.py, line 154-160:
 
-´´´python
+```python
         
 base_url = '../weights/'
 if backbone == 'MOBILENET':
     url = 'mobilenet_v2-b0353104.pth'
 else:
     url = 'resnet50-19c8e357.pth'
-´´´
+```
