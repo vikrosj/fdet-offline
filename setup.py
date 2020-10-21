@@ -84,9 +84,8 @@ setup(
                     'tqdm==4.50.2',
                     'ttictoc==0.5.6',
                     'urllib3==1.25.8',
-                    'webencodings==0.5.1'
-                    ],
-    entry_points=
+                    'webencodings==0.5.1'],
+    entry_points={
         'console_scripts': ['fdet=fdet.cli.main:main']
     }
 )
