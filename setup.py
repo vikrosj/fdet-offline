@@ -14,7 +14,7 @@ setup(
     maintainer=AUTHOR,
     maintainer_email=EMAIL,
     url='https://github.com/vikrosj/fdet-offline',
-    download_url='https://github.com/vikrosj/fdet-offline',
+    download_url='https://github.com/vikrosj/fdet-offline/archive/0.0.1.tar.gz',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
