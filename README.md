@@ -19,6 +19,14 @@ self._onet = self.__load_model(_ONet, base_url + 'mtcnn_onet.pt')
 I downloaded those weights and put them in the directory ***weights***.
 Then I changed the base_url to point to that directory.
 
+```python
+base_url = Path('weights/').resolve()
+
+self._pnet = self.__load_model(_PNet, str(PurePath(base_url, 'mtcnn_pnet.pt'))   )
+self._rnet = self.__load_model(_RNet, str(PurePath(base_url, 'mtcnn_rnet.pt'))   )
+self._onet = self.__load_model(_ONet, str(PurePath(base_url, 'mtcnn_onet.pt'))   )
+```
+
 ### 2.
 
 At fdet/mtcnn.py, line 427:
