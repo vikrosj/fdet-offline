@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 AUTHOR = 'Viktoria R.'
 EMAIL = 'viktoria.rosjo@gmail.com'
-VERSION = '1.0.1'
+VERSION = '1.0.0'
 
 setup(
     name='fdet-offline',
