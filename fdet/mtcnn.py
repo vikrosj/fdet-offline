@@ -10,6 +10,7 @@ import torch
 from torchvision.models.utils import load_state_dict_from_url
 from fdet.detector import Detector, SingleDetType
 from fdet.utils.errors import DetectorValueError, DetectorModelError
+from pathlib import Path, PurePath
 
 
 # pylint: disable=invalid-sequence-index
@@ -70,10 +71,10 @@ class MTCNN(Detector):
                 raise DetectorValueError('The nms_thresholds values must be between 0 and 1.')
         self._nms_thresholds = nms_thresholds
 
-        base_url = '../weights'
-        self._pnet = self.__load_model(_PNet, base_url + 'mtcnn_pnet.pt')
-        self._rnet = self.__load_model(_RNet, base_url + 'mtcnn_rnet.pt')
-        self._onet = self.__load_model(_ONet, base_url + 'mtcnn_onet.pt')
+        base_url = Path('weights/').resolve()
+        self._pnet = self.__load_model(_PNet, str(PurePath(base_url, 'mtcnn_pnet.pt'))   )
+        self._rnet = self.__load_model(_RNet, str(PurePath(base_url, 'mtcnn_rnet.pt'))   )
+        self._onet = self.__load_model(_ONet, str(PurePath(base_url, 'mtcnn_onet.pt'))   )
 
         self._pnet = self._init_torch_module(self._pnet)
         self._rnet = self._init_torch_module(self._rnet)
