@@ -47,7 +47,7 @@ state_dict = torch.load(url, map_location=self._device_control)
 ## RetinaFace
 ### 1.
 
-In fdet/retinaface.py, line 154-160:
+In fdet/retinaface.py, line 154-160, point to downloaded weights:
 
 ```python
         
@@ -57,3 +57,10 @@ if backbone == 'MOBILENET':
 else:
     url = str(PurePath(base_url, 'resnet50-19c8e357.pth'))
 ```
+
+and in fdet/retinaface.py, line 163, use torch.load instead of load_state_dict_from_url:
+
+```python
+state_dict = torch.load(base_url + url, map_location=self._device_control)
+```
+
