@@ -160,7 +160,7 @@ class RetinaFace(Detector):
         else:
             url = str(PurePath(base_url, 'resnet50-19c8e357.pth')) 
 
-        state_dict = torch.load(base_url + url, map_location=self._device_control)
+        state_dict = torch.load(url, map_location=self._device_control)
 
         model = _RetinaModule(device_control=self._device_control, backbone=backbone)
         model.load_state_dict(state_dict, strict=False)
