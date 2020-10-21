@@ -12,6 +12,7 @@ import torchvision.models
 from torchvision.models.utils import load_state_dict_from_url
 from fdet.detector import Detector, SingleDetType
 from fdet.utils.errors import DetectorValueError
+from pathlib import Path, PurePath
 
 #pylint: disable=too-many-arguments
 #pylint: disable=too-many-locals
@@ -153,11 +154,11 @@ class RetinaFace(Detector):
 
     def __load_retina_module(self, backbone: str) -> '_RetinaModule':
 
-        base_url = '../weights/'
+        base_url = Path('weights/').resolve() 
         if backbone == 'MOBILENET':
-            url = 'mobilenet_v2-b0353104.pth'
+            url = str(PurePath(base_url, 'mobilenet_v2-b0353104.pth')) 
         else:
-            url = 'resnet50-19c8e357.pth'
+            url = str(PurePath(base_url, 'resnet50-19c8e357.pth')) 
 
         state_dict = torch.load(base_url + url, map_location=self._device_control)
 

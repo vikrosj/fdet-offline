@@ -51,9 +51,9 @@ In fdet/retinaface.py, line 154-160:
 
 ```python
         
-base_url = '../weights/'
+base_url = Path('weights/').resolve() 
 if backbone == 'MOBILENET':
-    url = 'mobilenet_v2-b0353104.pth'
+    url = str(PurePath(base_url, 'mobilenet_v2-b0353104.pth')) 
 else:
-    url = 'resnet50-19c8e357.pth'
+    url = str(PurePath(base_url, 'resnet50-19c8e357.pth'))
 ```
