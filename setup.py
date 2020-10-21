@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 AUTHOR = 'Viktoria R.'
 EMAIL = 'viktoria.rosjo@gmail.com'
-VERSION = '1.0.1'
+VERSION = '1.0.0'
 
 setup(
     name='fdet-offline',
@@ -14,7 +14,7 @@ setup(
     maintainer=AUTHOR,
     maintainer_email=EMAIL,
     url='https://github.com/vikrosj/fdet-offline',
-    download_url='https://github.com/vikrosj/fdet-offline/archive/1.0.1.tar.gz',
+    download_url='https://github.com/vikrosj/fdet-offline/archive/1.0.0.tar.gz',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
