@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 AUTHOR = 'Viktoria R.'
 EMAIL = 'viktoria.rosjo@gmail.com'
-VERSION = '1.0.3'
+VERSION = '1.0.4'
  
 setup(
     name='fdet-offline',
@@ -14,7 +14,7 @@ setup(
     maintainer=AUTHOR,
     maintainer_email=EMAIL,
     url='https://github.com/vikrosj/fdet-offline',
-    download_url='https://github.com/vikrosj/fdet-offline/archive/1.0.3.tar.gz',
+    download_url='https://github.com/vikrosj/fdet-offline/archive/1.0.4.tar.gz',
     description='An easy to use face detection module based on MTCNN and RetinaFace algorithms.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',  # This is important!
