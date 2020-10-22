@@ -1,5 +1,12 @@
 # FDet-Offline: just like FDet, but offline
 
+# NB Download like this: 
+```console
+pip install fdet-offline --find-links https://download.pytorch.org/whl/torch_stable.html
+```
+
+Package depends on torch-packages not in PyPi.
+
 A version of [fdet](https://github.com/acnazarejr/fdet)
 where you don't have to access the internet to download the weights.
 
