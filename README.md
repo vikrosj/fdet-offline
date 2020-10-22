@@ -1,6 +1,6 @@
 # FDet-Offline: just like FDet, but offline
 
-# NB Download like this: 
+### Download like this: 
 ```console
 pip install fdet-offline --find-links https://download.pytorch.org/whl/torch_stable.html
 ```
