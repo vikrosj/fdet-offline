@@ -57,7 +57,8 @@ setup(
                     'retrying==1.3.3',
                     'six==1.14.0',
                     'toml==0.10.1',
-                    'torch==1.6.0+cu92',
+                    'torch==1.6.0+cpu',
+                    'torchvision==0.7.0+cpu'
                     'ttictoc==0.5.6',
                     'urllib3==1.25.8',
                     'webencodings==0.5.1'
