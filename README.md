@@ -24,7 +24,7 @@ and returns a partial function of [torch.load](https://pytorch.org/docs/stable/g
 
 This partial function gets *map_location* from *__load_model*.
 
-In previously mentioned fdet/mtcnn.py, line 73-76, now looks like this:
+The previously mentioned fdet/mtcnn.py, line 73-76, now looks like this:
 
 ```python
 self._pnet = self.__load_model(_PNet, 'pnet')
@@ -32,7 +32,7 @@ self._rnet = self.__load_model(_RNet, 'rnet')
 self._onet = self.__load_model(_ONet, 'onet')
 ```
 
-In fdet/mtcnn.py, what previously was (notice that url is input):
+In fdet/mtcnn.py, what previously was (url was input):
 
 ```python
 
@@ -42,7 +42,7 @@ def __load_model(self, net_class: type, url: str) -> torch.nn.Module:
         state_dict = load_state_dict_from_url(url, map_location=self._device_control)
 ```
 
-is now (notice that mtcnn_type is input):
+is now (mtcnn_type is input):
 
 
 ```python
