@@ -426,8 +426,8 @@ class MTCNN(Detector):
     def __load_model(self, net_class: type, mtcnn_type: str) -> torch.nn.Module:
         """Download and construct the models"""
         try:
-            partial_load = import_weights.load_partial(mtcnn_type)
-            state_dict = partial_load(map_location=self._device_control)
+            load_state_dict = import_weights.load_partial(mtcnn_type)
+            state_dict = load_state_dict(map_location=self._device_control)
         except urllib.error.HTTPError: #type: ignore
             raise DetectorModelError('Invalid model name: ' + mtcnn_type)
         model = net_class()
