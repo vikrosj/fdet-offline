@@ -57,6 +57,7 @@ setup(
                     'contextlib2==0.6.0',
                     'distlib==0.3.0',
                     'distro==1.4.0',
+                    'fdet-offline-mtcnn-weights==1.0.0',
                     'future==0.18.2',
                     'html5lib==1.0.1',
                     'idna==2.8',
@@ -84,7 +85,9 @@ setup(
                     'tqdm==4.50.2',
                     'ttictoc==0.5.6',
                     'urllib3==1.25.8',
-                    'webencodings==0.5.1'],
+                    'webencodings==0.5.1'
+
+                    ],
     entry_points={
         'console_scripts': ['fdet=fdet.cli.main:main']
     }
