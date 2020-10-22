@@ -18,7 +18,7 @@ self._onet = self.__load_model(_ONet, base_url + 'mtcnn_onet.pt')
 ```
 I downloaded those weights and created packages to import them (because PyPi has a 100MB max on package size, this was the solution).
 
-I put the weights in the directory ***weights*** in the package **fdet_offline_mtcnn_weights**.
+I put the weights in the directory **weights** in the package **fdet_offline_mtcnn_weights**.
 The function **fdet_offline_mtcnn_weights.import_weights** takes *mtcnn_type* as input.
 
 In previously mentioned fdet/mtcnn.py, line 73-76, the *mtcnn_type* is sent as input to *__load_model*
@@ -29,7 +29,7 @@ self._rnet = self.__load_model(_RNet, 'rnet')
 self._onet = self.__load_model(_ONet, 'onet')
 ```
 
-In fdet/mtcnn.py, what previously was:
+In fdet/mtcnn.py, what previously was (notice that url is input):
 
 ```python
 
@@ -37,15 +37,9 @@ def __load_model(self, net_class: type, url: str) -> torch.nn.Module:
     """Download and construct the models"""
     try:
         state_dict = load_state_dict_from_url(url, map_location=self._device_control)
-    except urllib.error.HTTPError: #type: ignore
-        raise DetectorModelError('Invalid model weights url: ' + url)
-    model = net_class()
-    model.load_state_dict(state_dict, strict=False)
-    return model
-
 ```
 
-is now:
+is now (notice that mtcnn_type is input):
 
 
 ```python
@@ -54,11 +48,6 @@ def __load_model(self, net_class: type, mtcnn_type: str) -> torch.nn.Module:
     try:
         partial_load = import_weights.load_partial(mtcnn_type)
         state_dict = partial_load(map_location=self._device_control)
-    except urllib.error.HTTPError: #type: ignore
-        raise DetectorModelError('Invalid model name: ' + mtcnn_type)
-    model = net_class()
-    model.load_state_dict(state_dict, strict=False)
-    return model
 ```
 
 
