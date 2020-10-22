@@ -20,7 +20,7 @@ I downloaded those weights and created packages to import them (because PyPi has
 
 I put the weights in the directory **weights** in the package **fdet_offline_mtcnn_weights**.
 The function **fdet_offline_mtcnn_weights.import_weights** takes *mtcnn_type* as input
-and returns a partial function of [torch.load]https://pytorch.org/docs/stable/generated/torch.load.html#torch.load).
+and returns a partial function of [torch.load](https://pytorch.org/docs/stable/generated/torch.load.html#torch.load).
 
 This partial function gets *map_location* from *__load_model*.
 
