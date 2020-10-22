@@ -5,7 +5,7 @@ where you don't have to access the internet to download the weights.
 
 These are the changes:
 
-## MTCNN
+## MTCNN (only works for this model at the moment)
 ### 1.
 
 In fdet/mtcnn.py, line 73-76, the url for the MTCNN-weights are listed:
@@ -70,24 +70,3 @@ That line now states this instead;
 ```python
 state_dict = torch.load(url, map_location=self._device_control)
 ```
-
-## RetinaFace
-### 1.
-
-In fdet/retinaface.py, line 154-160, point to downloaded weights:
-
-```python
-        
-base_url = Path('weights/').resolve() 
-if backbone == 'MOBILENET':
-    url = str(PurePath(base_url, 'mobilenet_v2-b0353104.pth')) 
-else:
-    url = str(PurePath(base_url, 'resnet50-19c8e357.pth'))
-```
-
-and in fdet/retinaface.py, line 163, use torch.load instead of load_state_dict_from_url:
-
-```python
-state_dict = torch.load(url, map_location=self._device_control)
-```
-
