@@ -16,15 +16,17 @@ self._pnet = self.__load_model(_PNet, base_url + 'mtcnn_pnet.pt')
 self._rnet = self.__load_model(_RNet, base_url + 'mtcnn_rnet.pt')
 self._onet = self.__load_model(_ONet, base_url + 'mtcnn_onet.pt')
 ```
-I downloaded those weights and put them in the directory ***weights***.
-Then I changed the base_url to point to that directory.
+I downloaded those weights and created packages to import them (because PyPi has a 100MB max on package size, this was the solution).
+
+I put the weights in the directory ***weights*** in the package ***fdet_offline_mtcnn_weights***.
+The function ***fdet_offline_mtcnn_weights.import_weights*** takes *mtcnn_type* as input.
+
+In previously mentioned fdet/mtcnn.py, line 73-76, the *mtcnn_type* is sent as input to *__load_model*
 
 ```python
-base_url = Path('weights/').resolve()
-
-self._pnet = self.__load_model(_PNet, str(PurePath(base_url, 'mtcnn_pnet.pt'))   )
-self._rnet = self.__load_model(_RNet, str(PurePath(base_url, 'mtcnn_rnet.pt'))   )
-self._onet = self.__load_model(_ONet, str(PurePath(base_url, 'mtcnn_onet.pt'))   )
+self._pnet = self.__load_model(_PNet, 'pnet')
+self._rnet = self.__load_model(_RNet, 'rnet')
+self._onet = self.__load_model(_ONet, 'onet')
 ```
 
 ### 2.

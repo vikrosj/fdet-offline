@@ -12,6 +12,8 @@ from fdet.detector import Detector, SingleDetType
 from fdet.utils.errors import DetectorValueError, DetectorModelError
 from pathlib import Path, PurePath
 
+from fdet_offline_mtcnn_weights import import_weights
+
 
 # pylint: disable=invalid-sequence-index
 # pylint: disable=too-many-arguments
@@ -71,10 +73,9 @@ class MTCNN(Detector):
                 raise DetectorValueError('The nms_thresholds values must be between 0 and 1.')
         self._nms_thresholds = nms_thresholds
 
-        base_url = Path('weights/').resolve()
-        self._pnet = self.__load_model(_PNet, str(PurePath(base_url, 'mtcnn_pnet.pt'))   )
-        self._rnet = self.__load_model(_RNet, str(PurePath(base_url, 'mtcnn_rnet.pt'))   )
-        self._onet = self.__load_model(_ONet, str(PurePath(base_url, 'mtcnn_onet.pt'))   )
+        self._pnet = self.__load_model(_PNet, 'pnet')
+        self._rnet = self.__load_model(_RNet, 'rnet')
+        self._onet = self.__load_model(_ONet, 'onet')
 
         self._pnet = self._init_torch_module(self._pnet)
         self._rnet = self._init_torch_module(self._rnet)
@@ -422,12 +423,13 @@ class MTCNN(Detector):
             return all(map(self.__is_list_empty, in_list))
         return False  # Not a list
 
-    def __load_model(self, net_class: type, url: str) -> torch.nn.Module:
+    def __load_model(self, net_class: type, mtcnn_type: str) -> torch.nn.Module:
         """Download and construct the models"""
         try:
-            state_dict = torch.load(url, map_location=self._device_control)
+            partial_load = import_weights.load_partial(mtcnn_type)
+            state_dict = partial_load(map_location=self._device_control)
         except urllib.error.HTTPError: #type: ignore
-            raise DetectorModelError('Invalid model weights url: ' + url)
+            raise DetectorModelError('Invalid model name: ' + mtcnn_type)
         model = net_class()
         model.load_state_dict(state_dict, strict=False)
         return model
