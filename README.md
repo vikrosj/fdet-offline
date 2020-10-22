@@ -29,6 +29,39 @@ self._rnet = self.__load_model(_RNet, 'rnet')
 self._onet = self.__load_model(_ONet, 'onet')
 ```
 
+In fdet/mtcnn.py, what previously was:
+
+```python
+
+def __load_model(self, net_class: type, url: str) -> torch.nn.Module:
+    """Download and construct the models"""
+    try:
+        state_dict = load_state_dict_from_url(url, map_location=self._device_control)
+    except urllib.error.HTTPError: #type: ignore
+        raise DetectorModelError('Invalid model weights url: ' + url)
+    model = net_class()
+    model.load_state_dict(state_dict, strict=False)
+    return model
+
+```
+
+Is now:
+
+
+```python
+def __load_model(self, net_class: type, mtcnn_type: str) -> torch.nn.Module:
+    """Download and construct the models"""
+    try:
+        partial_load = import_weights.load_partial(mtcnn_type)
+        state_dict = partial_load(map_location=self._device_control)
+    except urllib.error.HTTPError: #type: ignore
+        raise DetectorModelError('Invalid model name: ' + mtcnn_type)
+    model = net_class()
+    model.load_state_dict(state_dict, strict=False)
+    return model
+```
+
+
 ### 2.
 
 At fdet/mtcnn.py, line 427:
