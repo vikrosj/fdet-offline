@@ -7,6 +7,8 @@ pip install fdet-offline --find-links https://download.pytorch.org/whl/torch_sta
 
 Package depends on torch-packages not in PyPi.
 
+==============================================================================================
+
 A version of [fdet](https://github.com/acnazarejr/fdet)
 where you don't have to access the internet to download the weights.
 
