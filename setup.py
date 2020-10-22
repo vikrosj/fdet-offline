@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 AUTHOR = 'Viktoria R.'
 EMAIL = 'viktoria.rosjo@gmail.com'
 VERSION = '1.0.2'
-
+ 
 setup(
     name='fdet-offline',
     version=VERSION,
@@ -21,7 +21,7 @@ setup(
     keywords='face recognition detection biometry',
     packages=find_packages(),
     zip_safe=False,
-    python_requires='>=3.5',
+    python_requires='>=3.8',
     install_requires=[
                     'appdirs==1.4.3',
                     'attrs==20.2.0',
@@ -57,9 +57,7 @@ setup(
                     'retrying==1.3.3',
                     'six==1.14.0',
                     'toml==0.10.1',
-                    'torch==1.6.0',
-                    'torchvision==0.7.0',
-                    'tqdm==4.50.2',
+                    'torch==1.6.0+cu92',
                     'ttictoc==0.5.6',
                     'urllib3==1.25.8',
                     'webencodings==0.5.1'
